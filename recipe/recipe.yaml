@@ -46,8 +46,10 @@ requirements:
 
 tests:
   - script:
-      - rig --help
-      - rig --version
+      - if: build_platform == host_platform
+        then:
+          - rig --help
+          - rig --version
   - package_contents:
       bin:
         - rig
