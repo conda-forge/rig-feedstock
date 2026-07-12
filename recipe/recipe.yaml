@@ -23,7 +23,7 @@ build:
           - mkdir -p "$PREFIX"/share/bash-completion/completions "$PREFIX"/share/fish/vendor_completions.d "$PREFIX"/share/zsh/site-functions
           - find target -name rig.bash -exec cp \{\} "$PREFIX"/share/bash-completion/completions/rig \;
           - find target -name rig.fish -exec cp \{\} "$PREFIX"/share/fish/vendor_completions.d/rig.fish \;
-          - find target -name _rig -exec cp \{\} "$PREFIX"/share/zsh/site-functions/_rig \;
+          - find target -name _rig     -exec cp \{\} "$PREFIX"/share/zsh/site-functions/_rig \;
       - if: win
         then:
           - cargo auditable install --path=. --root="%LIBRARY_PREFIX%" --no-track --locked --bins --target-dir=target
@@ -33,7 +33,7 @@ build:
           - mkdir "%LIBRARY_PREFIX%"\share\zsh\site-functions
           - for /f "usebackq" %%f in (`dir /s /b target\rig.bash`) do (copy "%%f" "%LIBRARY_PREFIX%\share\bash-completion\completions\rig")
           - for /f "usebackq" %%f in (`dir /s /b target\rig.fish`) do (copy "%%f" "%LIBRARY_PREFIX%\share\fish\vendor_completions.d\rig.fish")
-          - for /f "usebackq" %%f in (`dir /s /b target\_rig`) do (copy "%%f" "%LIBRARY_PREFIX%\share\zsh\site-functions\_rig")
+          - for /f "usebackq" %%f in (`dir /s /b target\_rig`)     do (copy "%%f" "%LIBRARY_PREFIX%\share\zsh\site-functions\_rig")
       - cargo-bundle-licenses --format=yaml --output=./THIRDPARTY.yml
 
 requirements:
@@ -46,10 +46,8 @@ requirements:
 
 tests:
   - script:
-      - if: build_platform == host_platform
-        then:
-          - rig --help
-          - rig --version
+      - rig --help
+      - rig --version
   - package_contents:
       bin:
         - rig
