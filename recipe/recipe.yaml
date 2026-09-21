@@ -1,5 +1,5 @@
 context:
-  version: "0.8.1"
+  version: "0.10.0"
 
 package:
   name: rig
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/r-lib/rig/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: a0f00e7c84573c15819cf7d907dd8668ad67a31784b07e1edd59039e514675fd
+  sha256: 09f020effe1e0a6bbdf57b17e5f8e1b9d5536f53bcd9de55d54aa6b2fec109f1
 
 build:
-  number: 1
+  number: 0
   script:
     env:
       CARGO_PROFILE_RELEASE_LTO: fat
