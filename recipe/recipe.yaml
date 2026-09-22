@@ -44,6 +44,7 @@ tests:
   - package_contents:
       bin:
         - rig
+        - rig-shim
       files:
         - if: unix
           then:
